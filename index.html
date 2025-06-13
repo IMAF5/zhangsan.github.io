@@ -13,178 +13,131 @@
         }
         
         body {
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
             color: #fff;
             min-height: 100vh;
-            background-image: url('https://img.zcool.cn/community/01e5ea5d8b8c1ca801209e1f9b1a7e.jpg@1280w_1l_2o_100sh.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            background-blend-mode: overlay;
+            overflow-x: hidden;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, #d4af37, #f1c40f, #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-            position: relative;
-            display: inline-block;
-        }
-        
-        h1::before, h1::after {
-            content: "❖";
-            color: #d4af37;
-            margin: 0 15px;
-            font-size: 1.5rem;
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin-bottom: 2rem;
-            color: #d4af37;
-        }
-        
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .service-card {
-            background: rgba(30, 30, 50, 0.7);
-            border-radius: 15px;
-            padding: 1.5rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .service-card::before {
-            content: "";
-            position: absolute;
+        /* 视频背景容器 */
+        .video-bg-container {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, transparent 65%, rgba(212, 175, 55, 0.1) 100%);
-            z-index: -1;
+            z-index: -2;
+            overflow: hidden;
         }
         
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
-            border-color: rgba(212, 175, 55, 0.5);
-        }
-        
-        .service-card h3 {
-            color: #d4af37;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding-bottom: 0.5rem;
-        }
-        
-        .service-card p {
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .contact-section {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 2rem;
-            background: rgba(30, 30, 50, 0.7);
-            border-radius: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            position: relative;
-        }
-        
-        .contact-section::before {
-            content: "";
+        /* 视频背景 */
+        .video-bg {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 1px dashed rgba(212, 175, 55, 0.2);
-            border-radius: 10px;
-            pointer-events: none;
-        }
-        
-        .contact-title {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(90deg, #d4af37, #f1c40f, #d4af37);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .contact-methods {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .contact-card {
-            background: rgba(40, 40, 60, 0.7);
-            border-radius: 10px;
-            padding: 1.5rem;
-            min-width: 250px;
-            transition: all 0.3s;
-            cursor: pointer;
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            position: relative;
-        }
-        
-        .contact-card:hover {
-            background: rgba(212, 175, 55, 0.1);
-            transform: scale(1.05);
-            border-color: rgba(212, 175, 55, 0.5);
-        }
-        
-        .contact-card h3 {
-            margin-bottom: 0.5rem;
-            color: #d4af37;
-        }
-        
-        .contact-card p {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
             opacity: 0.8;
         }
         
-        .highlight {
-            color: #f1c40f;
+        /* 叠加层增强对比度 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 5, 30, 0.8) 0%, rgba(20, 10, 50, 0.6) 100%);
+            z-index: -1;
+        }
+        
+        /* 灯笼样式 */
+        .lantern {
+            position: fixed;
+            width: 80px;
+            height: 100px;
+            background: #d4af37;
+            border-radius: 50% 50% 10px 10px;
+            box-shadow: 0 0 30px #d4af37, 0 0 60px rgba(212, 175, 55, 0.7);
+            animation: swing ease-in-out infinite;
+            z-index: -1;
+        }
+        
+        .lantern::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 35px;
+            width: 10px;
+            height: 15px;
+            background: #d4af37;
+            border-radius: 5px;
+        }
+        
+        .lantern::after {
+            content: "唐";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #a52a2a;
             font-weight: bold;
+            font-size: 30px;
         }
         
-        footer {
-            text-align: center;
-            margin-top: 3rem;
-            padding: 1rem;
-            opacity: 0.7;
-            font-size: 0.9rem;
-            color: #d4af37;
+        /* 灯笼灯光效果 */
+        .lantern-light {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background: rgba(255, 215, 0, 0.4);
+            border-radius: 50%;
+            filter: blur(10px);
+            bottom: -30px;
+            left: 20px;
+            animation: flicker 3s infinite alternate;
         }
         
+        /* 飘动的旗帜 */
+        .flag {
+            position: fixed;
+            width: 60px;
+            height: 90px;
+            background: linear-gradient(to right, #d4af37, #a52a2a, #d4af37);
+            z-index: -1;
+            animation: wave 5s infinite ease-in-out;
+        }
+        
+        .flag::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: #d4af37;
+        }
+        
+        /* 动画效果 */
+        @keyframes swing {
+            0%, 100% { transform: rotate(-8deg); }
+            50% { transform: rotate(8deg); }
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: skewY(-5deg); }
+            50% { transform: skewY(5deg); }
+        }
+        
+        /* 中国风纹理 */
         .chinese-pattern {
             position: fixed;
             top: 0;
@@ -197,6 +150,243 @@
             z-index: -1;
         }
         
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #d4af37, #f1c40f, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::before, h1::after {
+            content: "❖";
+            color: #d4af37;
+            margin: 0 20px;
+            font-size: 2rem;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            color: #d4af37;
+            animation: fadeIn 1.5s ease-out 0.5s both;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .service-card {
+            background: rgba(20, 15, 40, 0.7);
+            border-radius: 15px;
+            padding: 1.8rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 65%, rgba(212, 175, 55, 0.15) 100%);
+            z-index: -1;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.4);
+            border-color: rgba(212, 175, 55, 0.8);
+        }
+        
+        .service-card h3 {
+            color: #d4af37;
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            padding-bottom: 0.8rem;
+            position: relative;
+        }
+        
+        .service-card h3::after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #d4af37, #f1c40f);
+            transition: width 0.4s ease;
+        }
+        
+        .service-card:hover h3::after {
+            width: 100%;
+        }
+        
+        .service-card p {
+            opacity: 0.9;
+            line-height: 1.8;
+            transition: opacity 0.4s;
+            font-size: 1.1rem;
+        }
+        
+        .service-card:hover p {
+            opacity: 1;
+        }
+        
+        .contact-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem 2rem;
+            background: rgba(20, 15, 40, 0.7);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            position: relative;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.5s ease-out 0.5s both;
+        }
+        
+        .contact-section::before {
+            content: "";
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            bottom: 15px;
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            pointer-events: none;
+        }
+        
+        .contact-title {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(90deg, #d4af37, #f1c40f, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+        
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .contact-card {
+            background: rgba(30, 25, 60, 0.7);
+            border-radius: 15px;
+            padding: 2rem;
+            min-width: 280px;
+            transition: all 0.4s;
+            cursor: pointer;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.15), transparent);
+            transition: 0.6s;
+        }
+        
+        .contact-card:hover::before {
+            left: 100%;
+        }
+        
+        .contact-card:hover {
+            background: rgba(212, 175, 55, 0.15);
+            transform: scale(1.08);
+            border-color: rgba(212, 175, 55, 0.8);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 1rem;
+            color: #d4af37;
+            font-size: 1.4rem;
+        }
+        
+        .contact-card p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .highlight {
+            color: #f1c40f;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(241, 196, 15, 0.5);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem 1rem;
+            opacity: 0.9;
+            font-size: 1rem;
+            color: #d4af37;
+            animation: fadeIn 1.5s ease-out 0.8s both;
+        }
+        
+        /* 为每个卡片设置不同的动画延迟 */
+        .service-card:nth-child(1) { animation-delay: 0.2s; }
+        .service-card:nth-child(2) { animation-delay: 0.3s; }
+        .service-card:nth-child(3) { animation-delay: 0.4s; }
+        .service-card:nth-child(4) { animation-delay: 0.5s; }
+        .service-card:nth-child(5) { animation-delay: 0.6s; }
+        .service-card:nth-child(6) { animation-delay: 0.7s; }
+        .service-card:nth-child(7) { animation-delay: 0.8s; }
+        .service-card:nth-child(8) { animation-delay: 0.9s; }
+        .service-card:nth-child(9) { animation-delay: 1s; }
+        
         @media (max-width: 768px) {
             .services {
                 grid-template-columns: 1fr;
@@ -208,13 +398,33 @@
             }
             
             h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .service-card {
+                animation: fadeInUp 1s ease-out;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 视频背景 -->
+    <div class="video-bg-container">
+        <video autoplay muted loop class="video-bg">
+            <source src="https://media.vjshi.com/2023-03-31/7a8c4b3c4a9e4a8e8c4b3c4a9e4a8e8c.mp4" type="video/mp4">
+            <!-- 备用图片 -->
+            <img src="https://img.zcool.cn/community/01e5ea5d8b8c1ca801209e1f9b1a7e.jpg@1280w_1l_2o_100sh.jpg" alt="大唐不夜城背景">
+        </video>
+        <div class="overlay"></div>
+    </div>
+    
+    <!-- 中国风纹理 -->
     <div class="chinese-pattern"></div>
+    
     <div class="container">
         <header>
             <h1>大唐不夜城专业数字服务</h1>
@@ -295,8 +505,85 @@
         
         <footer>
             <p>© 2023 大唐不夜城专业数字服务. 保留所有权利.</p>
-            <p style="margin-top: 0.5rem;">盛世长安 · 数字未来</p>
+            <p style="margin-top: 0.8rem;">盛世长安 · 数字未来</p>
         </footer>
     </div>
+
+    <script>
+        // 创建灯笼和旗帜
+        document.addEventListener('DOMContentLoaded', function() {
+            // 创建灯笼
+            function createLanterns() {
+                const lanternCount = 6;
+                
+                for (let i = 0; i < lanternCount; i++) {
+                    const lantern = document.createElement('div');
+                    lantern.className = 'lantern';
+                    
+                    // 随机位置 (左右两侧)
+                    const side = Math.random() > 0.5 ? 'left' : 'right';
+                    const x = side === 'left' 
+                        ? Math.random() * 10 
+                        : 90 + Math.random() * 10;
+                    
+                    const y = 10 + Math.random() * 60;
+                    
+                    lantern.style.left = `${x}%`;
+                    lantern.style.top = `${y}%`;
+                    
+                    // 随机摆动速度和幅度
+                    const duration = 3 + Math.random() * 4;
+                    const delay = Math.random() * 5;
+                    lantern.style.animation = `swing ${duration}s ease-in-out ${delay}s infinite`;
+                    
+                    // 添加灯光效果
+                    const light = document.createElement('div');
+                    light.className = 'lantern-light';
+                    lantern.appendChild(light);
+                    
+                    document.body.appendChild(lantern);
+                }
+            }
+            
+            // 创建旗帜
+            function createFlags() {
+                const flagCount = 4;
+                
+                for (let i = 0; i < flagCount; i++) {
+                    const flag = document.createElement('div');
+                    flag.className = 'flag';
+                    
+                    // 随机位置 (左右两侧)
+                    const side = Math.random() > 0.5 ? 'left' : 'right';
+                    const x = side === 'left' 
+                        ? 5 + Math.random() * 5 
+                        : 90 + Math.random() * 5;
+                    
+                    const y = 20 + Math.random() * 50;
+                    
+                    flag.style.left = `${x}%`;
+                    flag.style.top = `${y}%`;
+                    
+                    // 随机飘动速度和幅度
+                    const duration = 4 + Math.random() * 3;
+                    const delay = Math.random() * 5;
+                    flag.style.animation = `wave ${duration}s ease-in-out ${delay}s infinite`;
+                    
+                    document.body.appendChild(flag);
+                }
+            }
+            
+            // 初始化效果
+            createLanterns();
+            createFlags();
+            
+            // 如果视频加载失败，使用备用背景
+            const video = document.querySelector('.video-bg');
+            video.addEventListener('error', function() {
+                document.querySelector('.video-bg-container').style.background = 'url(https://img.zcool.cn/community/01e5ea5d8b8c1ca801209e1f9b1a7e.jpg@1280w_1l_2o_100sh.jpg) no-repeat center center';
+                document.querySelector('.video-bg-container').style.backgroundSize = 'cover';
+            });
+        });
+    </script>
 </body>
-</html>
+</html> 
